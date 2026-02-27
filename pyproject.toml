@@ -1,0 +1,23 @@
+[project]
+name = "paystation"
+version = "0.1.0"
+description = "A simple Python library for interacting with the PayStation API."
+readme = "README.md"
+authors = [{ name = "rozari0", email = "rozario@duck.com" }]
+requires-python = ">=3.10"
+dependencies = ["requests>=2.32.5"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+
+[build-system]
+requires = ["uv_build>=0.10.0,<0.11.0"]
+build-backend = "uv_build"
+
+
+[project.urls]
+"Homepage" = "https://github.com/rozari0/paystation"
+"Bug Tracker" = "https://github.com/rozari0/paystation/issues"
