@@ -1,6 +1,6 @@
 [project]
 name = "paystation"
-version = "0.1.0"
+version = "0.1.1"
 description = "A simple Python library for interacting with the PayStation API."
 readme = "README.md"
 authors = [{ name = "rozari0", email = "rozario@duck.com" }]

@@ -32,7 +32,7 @@ class PayStation:
         reference: Optional[str] = None,
         cust_address: Optional[str] = None,
         checkout_items: Optional[str | Dict[Any, Any]] = None,
-        pay_with_charge: Optional[int] = None,
+        pay_with_charge: Optional[bool] = False,
         emi: Optional[int] = None,
         opt_a: Optional[str | Dict[Any, Any]] = None,
         opt_b: Optional[str | Dict[Any, Any]] = None,
@@ -51,7 +51,7 @@ class PayStation:
             reference (Optional[str], optional): Reference number for the transaction. Defaults to None.
             cust_address (Optional[str], optional): Customer's address. Defaults to None.
             checkout_items (Optional[str  |  Dict[Any, Any]], optional): Items in the checkout. Defaults to None.
-            pay_with_charge (Optional[int], optional): Whether to include a charge. Defaults to None.
+            pay_with_charge (Optional[bool], optional): Whether to include a charge. Defaults to False.
             emi (Optional[int], optional): EMI installment count. Defaults to None.
             opt_a (Optional[str  |  Dict[Any, Any]], optional): Optional field A. Defaults to None.
             opt_b (Optional[str  |  Dict[Any, Any]], optional): Optional field B. Defaults to None.
@@ -82,7 +82,7 @@ class PayStation:
         if checkout_items:
             payload["checkout_items"] = checkout_items
         if pay_with_charge is not None:
-            payload["pay_with_charge"] = pay_with_charge
+            payload["pay_with_charge"] = int(pay_with_charge)
         if emi is not None:
             payload["emi"] = emi
         if opt_a:
