@@ -1,5 +1,6 @@
+from typing import Any, Dict, Optional
+
 import requests
-from typing import Dict, Any, Optional
 
 
 class PayStation:
@@ -33,7 +34,7 @@ class PayStation:
         cust_address: Optional[str] = None,
         checkout_items: Optional[str | Dict[Any, Any]] = None,
         pay_with_charge: Optional[bool] = False,
-        emi: Optional[int] = None,
+        emi: Optional[bool] = False,
         opt_a: Optional[str | Dict[Any, Any]] = None,
         opt_b: Optional[str | Dict[Any, Any]] = None,
         opt_c: Optional[str | Dict[Any, Any]] = None,
@@ -52,7 +53,7 @@ class PayStation:
             cust_address (Optional[str], optional): Customer's address. Defaults to None.
             checkout_items (Optional[str  |  Dict[Any, Any]], optional): Items in the checkout. Defaults to None.
             pay_with_charge (Optional[bool], optional): Whether to include a charge. Defaults to False.
-            emi (Optional[int], optional): EMI installment count. Defaults to None.
+            emi (Optional[bool], optional): Whether to offer EMI options. Defaults to False.
             opt_a (Optional[str  |  Dict[Any, Any]], optional): Optional field A. Defaults to None.
             opt_b (Optional[str  |  Dict[Any, Any]], optional): Optional field B. Defaults to None.
             opt_c (Optional[str  |  Dict[Any, Any]], optional): Optional field C. Defaults to None.
@@ -84,7 +85,7 @@ class PayStation:
         if pay_with_charge is not None:
             payload["pay_with_charge"] = int(pay_with_charge)
         if emi is not None:
-            payload["emi"] = emi
+            payload["emi"] = int(emi)
         if opt_a:
             payload["opt_a"] = opt_a
         if opt_b:
