@@ -116,20 +116,3 @@ class PayStation:
 
         response = requests.post(endpoint, data=payload, headers=headers)
         return response.json()
-
-    def get_transaction_status_by_trx_id(self, trx_id: str) -> Dict[str, Any]:
-        """
-        Check the status of a transaction using the Transaction ID (v2 API).
-        """
-        endpoint = f"{self.base_url}/v2/transaction-status"
-
-        headers = {
-            "merchantId": self.merchant_id,
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        }
-
-        payload = {"trxId": trx_id}
-
-        response = requests.post(endpoint, json=payload, headers=headers)
-        return response.json()
