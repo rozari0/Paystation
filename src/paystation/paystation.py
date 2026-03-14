@@ -117,3 +117,36 @@ class PayStation:
 
         response = requests.post(endpoint, data=payload, headers=headers)
         return response.json()
+
+    def get_store_amount(
+        self, request_amount: float, payment_amount: float, payment_method: str
+    ) -> float:
+        """Retrieve the stored amount for a transaction based on the requested amount, payment amount, and payment method.
+
+        Args:
+            request_amount (float): The amount requested for the transaction.
+            payment_amount (float): The amount customer paid.
+            payment_method (str): The payment method used.
+
+        Returns:
+            float: The stored amount for the transaction.
+        """
+        if request_amount != payment_amount:
+            return request_amount
+
+        # According to https://merchant.paystation.com.bd/charge-information
+
+        payment_method = payment_method.lower()
+
+        if "amex" in payment_method or "american" in payment_method:
+            charge_percentage = 3.100
+        elif "visa" in payment_method or "mastercard" in payment_method:
+            charge_percentage = 2.100
+        elif "bkash" in payment_method:
+            charge_percentage = 1.800
+        else:
+            charge_percentage = 1.500
+
+        charge_amount = (payment_amount * charge_percentage) / 100.0
+        store_amount = payment_amount - charge_amount
+        return round(store_amount, 2)

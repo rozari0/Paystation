@@ -1,4 +1,4 @@
-# paystation
+# Paystation
 
 Python client for PayStation payment APIs.
 
